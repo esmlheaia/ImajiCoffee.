@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMAJI Coffee | Menu</title>
+
+  <link rel="stylesheet" href="stylecafe.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-bar">
+      <div class="logo">
+        <span class="imaji">IMAJI</span>
+        <span class="coffee">Coffee.</span>
+      </div>
+
+      <!-- single page scroll nav -->
+      <nav class="main-nav" id="topNav">
+        <a class="navlink active" href="#home">Home</a>
+        <a class="navlink" href="#story">Story</a>
+        <a class="navlink active" href="#menu">Menu</a>
+        <a class="navlink" href="#space">Space</a>
+        <a class="navlink" href="#community">Community</a>
+        <a class="navlink" href="#news">News</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn btn-cart" id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
+        <button class="btn btn-signin" id="authBtn">Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIMPLE SECTIONS (so layout matches: menu is the main focus) -->
+  <section id="home" class="container" style="padding:26px 0 0;">
+    <div style="color:#888;font-size:.85rem"></div>
+  </section>
+  <section id="story" class="container" style="padding:20px 0 0;">
+    <div style="color:#888;font-size:.85rem"></div>
+  </section>
+
+  <!-- MENU HERO -->
+  <section id="menu" class="menu-hero">
+    <div class="container">
+
+      <div class="menu-hero-top">
+        <div class="menu-hero-left">
+          <h1>Our Menu</h1>
+          <p>
+            IMAJI Coffee provides a variety of high quality coffee and drinks and flavors
+            that are suitable for you to support and cheer up your day. We also provide
+            coffee to accompany you at home along with the equipment.
+          </p>
+        </div>
+
+        <div class="delivery">
+          <small>Delivery Order</small>
+          <div class="store-badges-vertical">
+            <a href="#" onclick="return false" aria-label="Download on the App Store">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
+            <a href="#" onclick="return false" aria-label="Get it on Google Play">
+              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters">
+        <div class="filter-group">
+          <label>Search</label>
+          <span class="clear" onclick="clearSearch()">Clear</span>
+          <div class="input-wrap">
+            <span class="icon">🔍︎</span>
+            <input id="searchInput" type="text" placeholder="Keyword" oninput="filterCards()">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Price</label>
+          <span class="clear" onclick="resetSelect('priceSelect')">Clear</span>
+          <select id="priceSelect" onchange="filterCards()">
+            <option value="">All</option>
+            <option value="under10">Under $10</option>
+            <option value="10to20">$10 - $20</option>
+            <option value="20plus">$20+</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Sort By</label>
+          <span class="clear" onclick="resetSelect('sortSelect')">Clear</span>
+          <select id="sortSelect" onchange="sortCards()">
+            <option value="">Default</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CATEGORY TABS -->
+      <div class="category-tabs-wrap">
+        <div class="category-tabs" role="tablist" aria-label="Categories">
+          <button class="catbtn active" onclick="showCategory('coffee', this)">Coffee and Beverage</button>
+          <button class="catbtn" onclick="showCategory('food', this)">Food and Snack</button>
+          <button class="catbtn" onclick="showCategory('home', this)">Imaji Coffee at Home</button>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- COFFEE -->
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Ristretto Bianco">
+          <img src="https://i.nefisyemektarifleri.com/2023/04/24/ristretto-bianco-nedir-nasil-yapilir-icinde-ne-var-1.jpg" alt="Ristretto Bianco">
+          <h3>Ristretto Bianco</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Iced Creamy Latte">
+          <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=80" alt="Iced Creamy Latte">
+          <h3>Iced Creamy Latte</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Cappuccino">
+          <img src="https://www.cubes-asia.com/storage/blogs/2024-07/cappuccino.jpg" alt="Cappuccino">
+          <h3>Cappuccino</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Milk Coffee with Regal">
+          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=80" alt="Milk Coffee with Regal">
+          <h3>Milk Coffee with Regal</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Orange Juice">
+          <img src="https://1.bp.blogspot.com/-iU621Zs0jpk/X45DkAh_ERI/AAAAAAABEZU/arDoi4zfc9wrL7VVDxhtWKKIRkroNjviACLcBGAsYHQ/s2048/abhishek-hajare-kkrXVKK-jhg-unsplash.jpg" alt="Orange Juice">
+          <h3>Orange Juice</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Soda Beverage">
+          <img src="https://hips.hearstapps.com/hmg-prod/images/delish-220517-dirty-shirley-cocktail-001-ab-web-1657145301.jpg?crop=0.737xw:0.737xh;0.199xw" alt="Soda Beverage">
+          <h3>Soda Beverage</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Iced Americano">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.wDEzrjIk8HBmAFEq2uJ-_gHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Iced Americano">
+          <h3>Iced Americano</h3>
+          <div class="availability">Black coffee with a cold and bold taste.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Vegan Iced Latte">
+          <img src="https://myveganminimalist.com/wp-content/uploads/2020/07/Vegan-Iced-Coffee-Latte-9.jpg" alt="Vegan Iced Latte">
+          <h3>Vegan Iced Latte</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="coffee" data-price="5" data-name="Iced Chocolate">
+          <img src="https://www.everyday-delicious.com/wp-content/uploads/2022/07/iced-mocha-everyday-delicious-1.jpg" alt="Iced Chocolate">
+          <h3>Iced Chocolate</h3>
+          <div class="availability">Available Only at Cafe and Delivery.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <!-- FOOD (hidden default) -->
+        <div class="menu-card" data-cat="food" data-price="8" data-name="Croissant" style="display:none;">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.bicBhNxFFeJ3Wy2zKL6y7QHaHa?w=2700&h=2700&rs=1&pid=ImgDetMain&o=7&rm=3" alt="seafood">
+          <h3>SEAFOOD LUNCH</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="6" data-name="French Toast with Sugar" style="display:none;">
+          <img src="https://www.jessicagavin.com/wp-content/uploads/2020/05/french-toast-12-600x900.jpg" alt="French Toast with Sugar">
+          <h3>FRENCH TOAST WITH SUGAR</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://sallysbakingaddiction.com/wp-content/uploads/2018/03/chocolate-croissants-2.jpg" alt="chocolate croissant">
+          <h3>CHOCOLATE CROISSANT</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$10.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.rq8YnXsOA0cuET5tbu31PwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Brownies">
+          <h3>BROWNIES</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+         <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://www.chocolatemoosey.com/wp-content/uploads/2023/04/Small-Banana-Cake-recipe-photo-8418.jpg" alt="Banana Cake">
+          <h3>BANANA CAKE</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$4.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.R9LJTcwaGmgKUWQus31HXgHaI7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sandwish Pickles">
+          <h3>SANDWISH PICKLES</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$4.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://www.cookincanuck.com/wp-content/uploads/2020/06/Vegan-Hummus-Avocado-Sandwich-Recipe-Cookin-Canuck-4-scaled.jpg" alt="Sandwish Vegan">
+          <h3>SANDWISH VEGAN</h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+         <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://hangryinlove.com/wp-content/uploads/2024/01/Eggs-Benedict-Burger-1.jpeg" alt="eggs benedict burger">
+          <h3>EGG BENEDICT BURGER </h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="food" data-price="10" data-name="Sandwich" style="display:none;">
+          <img src="https://recipes.timesofindia.com/thumb/59320823.cms?imgsize=558215&width=800&height=800" alt="Corn Cheese Sandwich">
+          <h3>CORN CHEESE SANDWICH </h3>
+          <div class="availability">Available Only at Cafe.</div>
+          <div class="price">$5.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+
+
+        <!-- HOME (hidden default) -->
+        <div class="menu-card" data-cat="home" data-price="20" data-name="Coffee Beans Pack" style="display:none;">
+          <img src="https://m.media-amazon.com/images/I/71bfmzbCClL._AC_SL1500_.jpg" alt="French Press 8 Cups">
+          <h3>FRENCH PRESS 8 CUPS</h3>
+          <div class="availability">Available buy at Website</div>
+          <div class="price">$25.00</div>
+          <div class="note">Get 20% Off In App</div>
+        </div>
+
+        <div class="menu-card" data-cat="home" data-price="25" data-name="Drip Kit" style="display:none;">
+          <img src="https://ae01.alicdn.com/kf/HTB1d6tjb9_I8KJjy0Foq6yFnVXaE/All-Ready-Elegant-Glass-Tea-Set-Borosilicate-Glass-Teapot-With-Cups-Bamboo-Tea-Tray-Tea-SetKettle.jpg" alt="Glass Tea Set">
+          <h3>GLASS TEA POT TEIRE(6 CUPS)</h3>
+          <div class="availability">Available buy at Website</div>
+          <div class="price">$13.00</div>
+          <div class="note">Get 20% Off In App</div>
+          
+        </div>
+
+        <div class="menu-card" data-cat="home" data-price="30" data-name="Coffee Grinder" style="display:none;">
+          <img src="https://www.slx-hospitality.com/app/uploads/2021/12/Screen-Shot-2021-12-15-at-9.31.03-AM.png" alt="French press">
+          <h3> FRENCH PRESS 3 CUP</h3>
+          <div class="availability">Available buy at Website</div>
+          <div class="price">$40.00</div>
+          <div class="note">Get 20% Off In App</div>
+          
+        </div>
+
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="load-more" onclick="alert('Demo only')">Load More</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="space" class="container" style="padding:10px 0 0;">
+    <div style="color:#888;font-size:.85rem"></div>
+  </section>
+  <section id="community" class="container" style="padding:10px 0 0;">
+    <div style="color:#888;font-size:.85rem"></div>
+  </section>
+  <section id="news" class="container" style="padding:10px 0 24px;">
+    <div style="color:#888;font-size:.85rem"></div>
+  </section>
+
+  <!-- LOCATION / FOOTER -->
+  <section class="location" id="location">
+    <div class="container">
+      <h2>Our Location</h2>
+      <p>
+        JI. Bangkringan No 19, RT.11/RW.2, Kota Surabaya, 60124<br>
+        Customer Service +6282-2876-6862<br>
+        We are Open from Sun - Mon 10 AM - 22 PM
+      </p>
+
+      <div class="footer-middle">
+        <nav class="social-bar" aria-label="social links">
+          <a href="#" onclick="return false" aria-label="Menu">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M9 12h6"></path></svg>
+          </a>
+          <a href="#" onclick="return false" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="3"></rect><path d="M14.75 9.25h.01"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </a>
+          <a href="#" onclick="return false" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M13 4v9.2a3.8 3.8 0 1 1-3-3.72"></path><path d="M13 4c.7 2.3 2.4 4 4.7 4.5"></path></svg>
+          </a>
+          <a href="#" onclick="return false" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M21 12s0-3.2-.4-4.6a2.7 2.7 0 0 0-1.9-1.9C17.3 5 12 5 12 5s-5.3 0-6.7.5A2.7 2.7 0 0 0 3.4 7.4C3 8.8 3 12 3 12s0 3.2.4 4.6a2.7 2.7 0 0 0 1.9 1.9C6.7 19 12 19 12 19s5.3 0 6.7-.5a2.7 2.7 0 0 0 1.9-1.9C21 15.2 21 12 21 12Z"></path><path d="M10.5 9.5 15 12l-4.5 2.5V9.5Z"></path></svg>
+          </a>
+          <a href="#" onclick="return false" aria-label="X">
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M7 7h5"></path><path d="M12 17h5"></path></svg>
+          </a>
+          <a href="#" onclick="return false" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M21 5 3.8 12.2c-.8.3-.8 1.4.1 1.7l4.2 1.3 1.5 4.6c.3.9 1.4 1 1.8.2l2.4-3.9 4.1 3.1c.6.4 1.4.1 1.6-.6L22 6.3c.2-.9-.7-1.6-1.6-1.3Z"></path><path d="M8.1 15.2 18.2 8.3"></path></svg>
+          </a>
+        </nav>
+
+        <div class="delivery-box">
+          <small>Delivery Order</small>
+          <div class="store-badges">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2023 IMAJI COFFEE. All rights reserved</div>
+        <div>
+          <a href="#" onclick="return false">Terms and Conditions</a> |
+          <a href="#" onclick="return false">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART MODAL -->
+  <div class="overlay" id="cartOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Cart">
+      <div class="modal-head">
+        <span>Your Cart</span>
+        <button class="close" onclick="closeModal('cartOverlay')">✕</button>
+      </div>
+      <div class="modal-body" id="cartBody"></div>
+      <div class="modal-foot">
+        <button class="btnx ghost" onclick="clearCart()">Clear</button>
+        <button class="btnx primary" onclick="alert('Checkout demo only')">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="overlay" id="authOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Auth">
+      <div class="modal-head">
+        <span id="authTitle">Sign In</span>
+        <button class="close" onclick="closeModal('authOverlay')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="tabs">
+          <button id="tabSignIn" class="active" onclick="switchAuth('in')">Sign In</button>
+          <button id="tabSignUp" onclick="switchAuth('up')">Sign Up</button>
+        </div>
+
+        <div id="signInForm">
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="you@email.com">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+          <button class="btnx primary" style="width:100%" onclick="alert('Sign in demo only')">Sign In</button>
+          <p class="small" style="margin-top:10px">Demo only (no backend).</p>
+        </div>
+
+        <div id="signUpForm" style="display:none">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="you@email.com">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" placeholder="Create password">
+          </div>
+          <button class="btnx primary" style="width:100%" onclick="alert('Sign up demo only')">Create Account</button>
+          <p class="small" style="margin-top:10px">Demo only lang (no backend).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    // NAV underline active on click + scroll to section
+document.querySelectorAll(".navlink").forEach(link => {
+  link.addEventListener("click", (e) => {
+    // keep active underline
+    document.querySelectorAll(".navlink").forEach(a => a.classList.remove("active"));
+    link.classList.add("active");
+
+    // scroll to section (Home / Story / Menu etc.)
+    const targetId = link.getAttribute("href"); // ex: "#home"
+    const section = document.querySelector(targetId);
+    if(section){
+      e.preventDefault();
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
+    // CATEGORY SWITCH
+    function showCategory(cat, btn){
+      document.querySelectorAll(".catbtn").forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+
+      document.querySelectorAll(".menu-card").forEach(card=>{
+        card.style.display = (card.dataset.cat === cat) ? "block" : "none";
+      });
+
+      document.getElementById("searchInput").value="";
+      document.getElementById("priceSelect").value="";
+      document.getElementById("sortSelect").value="";
+    }
+
+    // FILTER (only visible category)
+    function filterCards(){
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+      const priceFilter = document.getElementById("priceSelect").value;
+
+      document.querySelectorAll(".menu-card").forEach(card=>{
+        if(card.style.display === "none") return;
+
+        const name = (card.dataset.name||"").toLowerCase();
+        const price = Number(card.dataset.price||0);
+
+        let ok = name.includes(keyword);
+
+        if(priceFilter==="under10") ok = ok && price < 10;
+        if(priceFilter==="10to20") ok = ok && price >=10 && price <=20;
+        if(priceFilter==="20plus") ok = ok && price > 20;
+
+        card.style.display = ok ? "block" : "none";
+      });
+    }
+
+    function sortCards(){
+      const sortVal = document.getElementById("sortSelect").value;
+      const grid = document.getElementById("menuGrid");
+      const visible = [...grid.children].filter(c=>c.style.display!=="none");
+      const hidden  = [...grid.children].filter(c=>c.style.display==="none");
+
+      if(sortVal==="low")  visible.sort((a,b)=>Number(a.dataset.price)-Number(b.dataset.price));
+      if(sortVal==="high") visible.sort((a,b)=>Number(b.dataset.price)-Number(a.dataset.price));
+
+      grid.innerHTML="";
+      visible.forEach(c=>grid.appendChild(c));
+      hidden.forEach(c=>grid.appendChild(c));
+    }
+
+    function clearSearch(){ document.getElementById("searchInput").value=""; filterCards(); }
+    function resetSelect(id){ document.getElementById(id).value=""; filterCards(); }
+
+    // CART
+    const cart=[];
+    const cartCount=document.getElementById("cartCount");
+    const cartBody=document.getElementById("cartBody");
+
+    document.getElementById("cartBtn").addEventListener("click", ()=>openModal("cartOverlay"));
+    document.getElementById("authBtn").addEventListener("click", ()=>openModal("authOverlay"));
+
+    function addToCart(name, price){
+      cart.push({name, price});
+      cartCount.textContent = cart.length;
+      renderCart();
+      openModal("cartOverlay");
+    }
+
+    function removeFromCart(i){
+      cart.splice(i,1);
+      cartCount.textContent = cart.length;
+      renderCart();
+    }
+
+    function clearCart(){
+      cart.length=0;
+      cartCount.textContent=0;
+      renderCart();
+    }
+
+    function renderCart(){
+      if(cart.length===0){
+        cartBody.innerHTML = `<p class="small">Your cart is empty.</p>`;
+        return;
+      }
+      let total=0;
+      cartBody.innerHTML = cart.map((it,i)=>{
+        total += it.price;
+        return `
+          <div class="row">
+            <div>
+              <div style="font-weight:900">${it.name}</div>
+              <div class="small">$${it.price.toFixed(2)}</div>
+            </div>
+            <button class="remove" onclick="removeFromCart(${i})">Remove</button>
+          </div>
+        `;
+      }).join("") + `
+        <div class="row" style="border-bottom:none">
+          <div style="font-weight:900">Total</div>
+          <div style="font-weight:900">$${total.toFixed(2)}</div>
+        </div>`;
+    }
+
+    // MODALS
+    function openModal(id){ document.getElementById(id).classList.add("show"); }
+    function closeModal(id){ document.getElementById(id).classList.remove("show"); }
+
+    document.querySelectorAll(".overlay").forEach(ov=>{
+      ov.addEventListener("click",(e)=>{ if(e.target===ov) ov.classList.remove("show"); });
+    });
+
+    // AUTH TABS
+    function switchAuth(mode){
+      const title=document.getElementById("authTitle");
+      const tabIn=document.getElementById("tabSignIn");
+      const tabUp=document.getElementById("tabSignUp");
+      const inForm=document.getElementById("signInForm");
+      const upForm=document.getElementById("signUpForm");
+
+      if(mode==="in"){
+        title.textContent="Sign In";
+        tabIn.classList.add("active"); tabUp.classList.remove("active");
+        inForm.style.display="block"; upForm.style.display="none";
+      }else{
+        title.textContent="Sign Up";
+        tabUp.classList.add("active"); tabIn.classList.remove("active");
+        inForm.style.display="none"; upForm.style.display="block";
+      }
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
