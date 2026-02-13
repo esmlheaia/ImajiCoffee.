@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IMAJI Coffee | Menu</title>
 
-  <link rel="stylesheet" href="stylecafe.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -111,6 +111,8 @@
           <button class="catbtn" onclick="showCategory('home', this)">Imaji Coffee at Home</button>
         </div>
       </div>
+
+      
 
       <!-- GRID -->
       <div class="menu-grid" id="menuGrid">
@@ -292,12 +294,77 @@
 
       </div>
 
+      
+
       <div class="load-more-wrap">
         <button class="load-more" onclick="alert('Demo only')">Load More</button>
       </div>
 
     </div>
   </section>
+
+  <!-- PRODUCT DETAIL (HIDDEN BY DEFAULT) -->
+<section id="detail" class="detail-page" style="display:none;">
+  <div class="container">
+
+    <div class="detail-top">
+      <!-- LEFT IMAGE -->
+      <div class="detail-image">
+        <img id="detailImg" src="" alt="Product">
+      </div>
+
+      <!-- RIGHT INFO -->
+      <div class="detail-info">
+        <div class="breadcrumb" id="detailCrumb">Home &nbsp;›&nbsp; Menu &nbsp;›&nbsp; Detail</div>
+
+        <h1 id="detailTitle">Product Name</h1>
+
+        <div class="detail-price-row">
+          <div class="detail-price" id="detailPrice">$5.00</div>
+          <div class="detail-old" id="detailOld" style="display:none">$5.00</div>
+          <div class="detail-off">• Get 20% Off In App</div>
+        </div>
+
+        <div class="detail-desc">
+          <div class="detail-desc-title">Description:</div>
+          <p id="detailDesc">
+            An all-time favorite blend with citrus fruit character, caramel flavors, and a pleasant faintly floral aroma.
+          </p>
+
+          <p class="detail-muted" id="detailExtra">
+            Locked scent:<br>
+            Excelso prevents air from entering the packaging with a locked aroma, ensuring the coffee's freshness.
+          </p>
+        </div>
+
+        <div class="detail-actions">
+          <button class="detail-add" id="detailAddBtn">Add to Cart</button>
+
+          <div class="qtybox">
+            <button class="qtybtn" id="qtyMinus">–</button>
+            <div class="qtynum" id="qtyNum">1</div>
+            <button class="qtybtn" id="qtyPlus">+</button>
+          </div>
+        </div>
+
+        <button class="detail-buy" id="detailBuyBtn">Buy it Now</button>
+
+        <button class="backlink" id="backToMenuBtn">← Back to Menu</button>
+      </div>
+    </div>
+
+    <!-- YOU MAY ALSO LIKE -->
+    <div class="detail-suggest">
+      <h2>You May Also Like</h2>
+
+      <div class="suggest-grid" id="suggestGrid">
+        <!-- auto-fill by JS -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <section id="space" class="container" style="padding:10px 0 0;">
     <div style="color:#888;font-size:.85rem"></div>
@@ -375,31 +442,95 @@
     </div>
   </div>
 
-  <!-- AUTH MODAL -->
-  <div class="overlay" id="authOverlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Auth">
-      <div class="modal-head">
-        <span id="authTitle">Sign In</span>
-        <button class="close" onclick="closeModal('authOverlay')">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="tabs">
-          <button id="tabSignIn" class="active" onclick="switchAuth('in')">Sign In</button>
-          <button id="tabSignUp" onclick="switchAuth('up')">Sign Up</button>
+ 
+  <!-- AUTH MODAL  -->
+<div class="overlay" id="authOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Sign In">
+
+    <div class="auth-wrap">
+
+      <!-- RIGHT TOP BUTTON (Back to Shop) -->
+      <button class="auth-back" onclick="closeModal('authOverlay')">
+        ↓ <span>Back to Shop</span>
+      </button>
+
+      <!-- LEFT PANEL -->
+      <div class="auth-left">
+        <div class="auth-logo">
+          <span class="imaji">IMAJI</span>
+          <span class="coffee">Coffee.</span>
         </div>
 
-        <div id="signInForm">
-          <div class="field">
-            <label>Email</label>
-            <input type="email" placeholder="you@email.com">
+        <h2>We Also Have<br/>Coffee For You<br/>at Home.</h2>
+
+        <p>
+          Holidays, work, and parties are great opportunities to serve a delicious cup of coffee.
+        </p>
+
+        <button class="auth-order" onclick="closeModal('authOverlay')">Order Now</button>
+
+        <!-- bottom products -->
+        <div class="auth-products">
+          <div class="auth-shelf">
+            <div class="auth-bag">
+              <img src=https://www.slx-hospitality.com/app/uploads/2021/12/Screen-Shot-2021-12-15-at-9.31.03-AM.png" alt="French press">
+            </div>
+            <div class="auth-bag">
+              <img src="https://tse4.mm.bing.net/th/id/OIP.rq8YnXsOA0cuET5tbu31PwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Brownies">
+              <div class="auth-best"></div>
+            </div>
+            <div class="auth-bag">
+              <img src="https://hips.hearstapps.com/hmg-prod/images/delish-220517-dirty-shirley-cocktail-001-ab-web-1657145301.jpg?crop=0.737xw:0.737xh;0.199xw" alt="Soda Beverage">
+            </div>
           </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password" placeholder="••••••••">
-          </div>
-          <button class="btnx primary" style="width:100%" onclick="alert('Sign in demo only')">Sign In</button>
-          <p class="small" style="margin-top:10px">Demo only (no backend).</p>
         </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="auth-right">
+        <h1>Welcome Back</h1>
+        <div class="auth-sub">Enter your credentials to access your account.</div>
+
+        <button class="google-btn" onclick="alert('Google sign-in demo only')">
+          <span class="google-dot"></span>
+          <span>Sign in with Google</span>
+        </button>
+
+        <div class="sep">Or used email</div>
+
+        <div class="auth-field">
+          <label>Email</label>
+          <input class="auth-input" type="email" placeholder="|Enter mail">
+        </div>
+
+        <div class="auth-field">
+          <label>Password</label>
+          <div class="pass-wrap">
+            <input id="authPass" class="auth-input" type="password" placeholder="Enter password">
+            <button class="pass-eye" type="button" onclick="toggleAuthPass()">👁</button>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="remember">
+            <input type="checkbox">
+            <span>Remember Me</span>
+          </label>
+
+          <span class="forgot" onclick="alert('Forgot password demo only')">Forgot Password?</span>
+        </div>
+
+        <button class="auth-signin" onclick="alert('Sign in demo only')">Sign In</button>
+
+        <div class="auth-bottom">
+          Don’t have an account?
+          <a href="#" onclick="alert('Create account demo only'); return false;">Create a account</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
         <div id="signUpForm" style="display:none">
           <div class="field">
@@ -454,6 +585,13 @@ document.querySelectorAll(".navlink").forEach(link => {
       document.getElementById("sortSelect").value="";
     }
 
+    function toggleAuthPass(){
+  const el = document.getElementById("authPass");
+  if(!el) return;
+  el.type = (el.type === "password") ? "text" : "password";
+}
+
+
     // FILTER (only visible category)
     function filterCards(){
       const keyword = document.getElementById("searchInput").value.toLowerCase();
@@ -498,12 +636,14 @@ document.querySelectorAll(".navlink").forEach(link => {
     const cartBody=document.getElementById("cartBody");
 
     document.getElementById("cartBtn").addEventListener("click", ()=>openModal("cartOverlay"));
+    renderCartAsPage();
     document.getElementById("authBtn").addEventListener("click", ()=>openModal("authOverlay"));
 
     function addToCart(name, price){
       cart.push({name, price});
       cartCount.textContent = cart.length;
       renderCart();
+      renderCartAsPage();
       openModal("cartOverlay");
     }
 
@@ -571,6 +711,285 @@ document.querySelectorAll(".navlink").forEach(link => {
     }
 
     renderCart();
+
+    //  replace the content of cartBody with My Cart + Summary layout
+function renderCartAsPage(){
+  if(cart.length === 0){
+    cartBody.innerHTML = `<p class="small">Your cart is empty.</p>`;
+    return;
+  }
+
+  // convert cart items into grouped qty (same product = 1 row)
+  const map = new Map();
+  cart.forEach(it=>{
+    const key = it.name + "|" + it.price;
+    if(!map.has(key)) map.set(key, { ...it, qty: 1 });
+    else map.get(key).qty += 1;
+  });
+  const items = Array.from(map.values());
+
+  let subtotal = 0;
+  const rowsHTML = items.map((it, idx)=>{
+    const line = it.price * it.qty;
+    subtotal += line;
+
+    // thumbnail: use currentProduct image if none (fallback)
+    const img = it.img || currentProduct?.img || "https://via.placeholder.com/80";
+
+    return `
+      <div class="cart-item">
+        <div class="cart-prod">
+          <img class="cart-thumb" src="${img}" alt="${it.name}">
+          <div>
+            <div class="cart-pname">${it.name}</div>
+            <div class="cart-pmeta">Available Only at Cafe and Delivery</div>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <div class="cart-qty">
+            <button onclick="decItem(${idx})">−</button>
+            <span>${it.qty}</span>
+            <button onclick="incItem(${idx})">+</button>
+          </div>
+        </div>
+
+        <div style="text-align:right;">$${it.price.toFixed(2)}</div>
+        <div style="text-align:right;font-weight:900;">$${line.toFixed(2)}</div>
+      </div>
+    `;
+  }).join("");
+
+  const tax = 0;
+  const total = subtotal + tax;
+
+  cartBody.innerHTML = `
+    <div class="cartview">
+      <div class="cartview-left">
+        <div class="cart-topbar">
+          <h3>My Cart</h3>
+          <div style="text-align:right">
+            <div style="font-size:12px;font-weight:900;margin-bottom:6px;">Delivery Order</div>
+            <div class="cart-mini-badges">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play">
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-table">
+          <div class="cart-head">
+            <div>Product</div>
+            <div style="text-align:center;">Quantity</div>
+            <div style="text-align:right;">Price</div>
+            <div style="text-align:right;">Subtotal</div>
+          </div>
+
+          ${rowsHTML}
+        </div>
+
+        <div style="margin-top:14px;">
+          <button class="btnx ghost" onclick="closeModal('cartOverlay')">← Back to Shop</button>
+        </div>
+      </div>
+
+      <div class="cartview-right">
+        <h4>Summary</h4>
+
+        <div class="sumrow"><span>Subtotal</span><b>$${subtotal.toFixed(2)}</b></div>
+        <div class="sumrow"><span>Tax (0%)</span><b>$${tax.toFixed(2)}</b></div>
+
+        <div class="sumrow"><span>Promo Code</span></div>
+        <input class="sum-input" placeholder="Enter code">
+
+        <div class="sumtotal"><span>Total</span><b>$${total.toFixed(2)}</b></div>
+        <button class="sum-checkout" onclick="alert('Checkout demo only')">Checkout</button>
+      </div>
+    </div>
+  `;
+
+  // save grouped list globally for +/- handlers
+  window.__groupedCart = items;
+}
+
+//  quantity buttons inside cart page
+function incItem(index){
+  const it = window.__groupedCart[index];
+  if(!it) return;
+  addToCart(it.name, it.price); // uses your existing function (adds 1)
+  renderCartAsPage();
+}
+
+function decItem(index){
+  const it = window.__groupedCart[index];
+  if(!it) return;
+
+  // remove 1 matching item from cart[]
+  const idx = cart.findIndex(x => x.name === it.name && x.price === it.price);
+  if(idx !== -1) cart.splice(idx, 1);
+
+  cartCount.textContent = cart.length;
+  renderCartAsPage();
+}
+
+
+    const detailSection = document.getElementById("detail");
+const menuSection = document.getElementById("menu");
+
+const detailImg = document.getElementById("detailImg");
+const detailTitle = document.getElementById("detailTitle");
+const detailPrice = document.getElementById("detailPrice");
+const detailOld = document.getElementById("detailOld");
+const detailDesc = document.getElementById("detailDesc");
+const detailExtra = document.getElementById("detailExtra");
+const detailAddBtn = document.getElementById("detailAddBtn");
+const detailBuyBtn = document.getElementById("detailBuyBtn");
+const backToMenuBtn = document.getElementById("backToMenuBtn");
+
+const qtyMinus = document.getElementById("qtyMinus");
+const qtyPlus = document.getElementById("qtyPlus");
+const qtyNum = document.getElementById("qtyNum");
+
+const suggestGrid = document.getElementById("suggestGrid");
+
+let currentProduct = null;
+let currentQty = 1;
+
+//  Make ALL product cards clickable (image or whole card)
+document.getElementById("menuGrid").addEventListener("click", (e) => {
+  const card = e.target.closest(".menu-card");
+  if (!card) return;
+
+  openDetailFromCard(card);
+});
+
+//  open detail from a card
+function openDetailFromCard(card) {
+  const img = card.querySelector("img")?.src || "";
+  const name = card.dataset.name || card.querySelector("h3")?.textContent?.trim() || "Product";
+  const priceVal = Number(card.dataset.price || 0);
+
+  currentProduct = { name, price: priceVal, img };
+  currentQty = 1;
+  qtyNum.textContent = currentQty;
+
+  // Fill detail UI
+  detailImg.src = img;
+  detailTitle.textContent = name;
+  detailPrice.textContent = `$${priceVal.toFixed(2)}`;
+
+  // Optional old price (for style like screenshot)
+  // If you want old price always shown, remove the IF.
+  const old = priceVal + 1; // demo only
+  detailOld.style.display = "inline-block";
+  detailOld.textContent = `$${old.toFixed(2)}`;
+
+  // Description (basic demo text – pwede mong palitan per product later)
+  detailDesc.textContent =
+    "An all-time favorite blend with citrus fruit character, caramel flavors, and a pleasant faintly floral aroma.";
+  detailExtra.innerHTML =
+    "Locked scent:<br>Excelso prevents air from entering the packaging with a locked aroma, ensuring the coffee's freshness.";
+
+  // Show detail / hide menu
+  menuSection.style.display = "none";
+  detailSection.style.display = "block";
+
+  // scroll to top of detail
+  detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Build "You May Also Like" based on same category
+  renderSuggestions(card.dataset.cat, name);
+}
+
+//  suggestions
+function renderSuggestions(cat, excludeName) {
+  const allCards = Array.from(document.querySelectorAll(".menu-card"));
+  const picks = allCards
+    .filter(c => (c.dataset.cat === cat) && ((c.dataset.name || "") !== excludeName))
+    .slice(0, 3);
+
+  suggestGrid.innerHTML = picks.map(c => {
+    const sImg = c.querySelector("img")?.src || "";
+    const sName = c.dataset.name || c.querySelector("h3")?.textContent?.trim() || "Product";
+    const sPrice = Number(c.dataset.price || 0);
+
+    return `
+      <div class="suggest-card" data-name="${escapeHtml(sName)}" data-price="${sPrice}" data-img="${sImg}">
+        <div class="suggest-img">
+          <img src="${sImg}" alt="${escapeHtml(sName)}">
+        </div>
+        <div class="suggest-name">${escapeHtml(sName).toUpperCase()}</div>
+        <div class="suggest-sub">Available Buy at Website</div>
+        <div class="suggest-price">$${sPrice.toFixed(2)}</div>
+        <div class="suggest-note">Get 20% Off in App</div>
+      </div>
+    `;
+  }).join("");
+
+  // click suggestion -> open detail
+  suggestGrid.querySelectorAll(".suggest-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const fake = {
+        dataset: {
+          name: card.dataset.name,
+          price: card.dataset.price,
+          cat: cat
+        },
+        querySelector: (sel) => {
+          if (sel === "img") return { src: card.dataset.img };
+          if (sel === "h3") return { textContent: card.dataset.name };
+          return null;
+        }
+      };
+      openDetailFromCard(fake);
+    });
+  });
+}
+
+// qty controls
+qtyMinus.addEventListener("click", () => {
+  currentQty = Math.max(1, currentQty - 1);
+  qtyNum.textContent = currentQty;
+});
+qtyPlus.addEventListener("click", () => {
+  currentQty = currentQty + 1;
+  qtyNum.textContent = currentQty;
+});
+
+//  add to cart uses your existing addToCart()
+detailAddBtn.addEventListener("click", () => {
+  if (!currentProduct) return;
+  for (let i = 0; i < currentQty; i++) {
+    addToCart(currentProduct.name, currentProduct.price);
+  }
+});
+
+// buy now (demo)
+detailBuyBtn.addEventListener("click", () => {
+  if (!currentProduct) return;
+  for (let i = 0; i < currentQty; i++) {
+    addToCart(currentProduct.name, currentProduct.price);
+  }
+  openModal("cartOverlay");
+  alert("Buy Now demo only. Added to cart!");
+});
+
+//  back to menu
+backToMenuBtn.addEventListener("click", () => {
+  detailSection.style.display = "none";
+  menuSection.style.display = "block";
+  menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// small helper to avoid HTML breaking
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
   </script>
 </body>
 </html>
